@@ -110,4 +110,38 @@ describe('Chapter04', () => {
     const result = map(x, (x) => x.toString())
     expect(result).toEqual(["1","2","3","4"])
   })
+
+  it('has bounded polymorphism', () => {
+    type TreeNode = {
+      value: string
+    }
+    type LeafNode = TreeNode & {
+      isLeaf: true
+    }
+    type InnerNode = TreeNode & {
+      children: [TreeNode] | [TreeNode, TreeNode]
+    }
+
+    const a: TreeNode = {value: 'a'}
+    const b: LeafNode = {value: 'b', isLeaf: true}
+    const c: InnerNode = {value: 'c', children: [b]}
+
+    const a1 = mapNode(a, _ => _.toUpperCase())
+    const b1 = mapNode(b, _  => _.toUpperCase())
+    const c1 = mapNode(c, _  => _.toUpperCase())
+
+    function mapNode<T extends TreeNode>(
+      node: T,
+      f: (value: string) => string
+    ): T {
+      return {
+        ...node,
+        value: f(node.value)
+      }
+    }
+
+    expect(a1).toEqual({value: 'A'})
+    expect(b1).toEqual({value: 'B', isLeaf: true})
+    expect(c1).toEqual({value: 'C', children: [b]})
+  })
 })
