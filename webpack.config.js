@@ -18,5 +18,8 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: `${process.cwd()}/dist`,
-  }
+  },
+  externals: {
+    'lodash': 'commonjs lodash'
+  },
 };

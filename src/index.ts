@@ -1,8 +1,9 @@
-import Greeter from './greeter'
+import Greeter from './greeter';
+import * as _ from 'lodash';
 
 const greeter = new Greeter("world");
 
-console.log(greeter.greet());
+console.log(_.padStart(greeter.greet(), 20));
 
 function getFinalPrice(price: number, discount: number) {
   return price - price/discount;
