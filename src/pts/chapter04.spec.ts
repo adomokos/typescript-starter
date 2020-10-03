@@ -91,4 +91,23 @@ describe('Chapter04', () => {
 
     expect(result).toEqual([{firstName: 'beth'}])
   })
+
+  it('can implement map with generics', () => {
+    type Map = {
+      <T, U>(array: T[], f: (item: T) => U): U[]
+    }
+
+    const map: Map = (array, f) => {
+      const result = []
+      for (let i=0; i<array.length; i++) {
+        result[i] = f(array[i])
+      }
+      return result
+    }
+
+    const x = [1,2,3,4]
+
+    const result = map(x, (x) => x.toString())
+    expect(result).toEqual(["1","2","3","4"])
+  })
 })
