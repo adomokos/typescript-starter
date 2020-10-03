@@ -8,6 +8,7 @@
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc",
     "dist": "npx webpack",
+    "dist:prd": "npx webpack -p",
     "start": "yarn build && node build/index.js",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix"
