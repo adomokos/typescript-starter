@@ -46,4 +46,49 @@ describe('Chapter04', () => {
     expect(generator.next()).toEqual({value: 2, done: false})
     expect(generator.next()).toEqual({value: 3, done: false})
   })
+
+  it('works with contextual typing', () => {
+    function times(
+      f: (index: number) => number,
+      n: number
+    ): number {
+      let x = 0
+      for (let i=0; i<n; i++) {
+        x += f(i)
+      }
+      return x
+    }
+
+    const result = times(n => n * 2, 4)
+    expect(result).toEqual(12)
+  })
+
+  it('works with generics', () => {
+    type Filter = {
+      <T>(array: T[], f: (item: T) => boolean): T[]
+    }
+    const filter: Filter = (array, f) => {
+      const result = []
+      for (let i = 0; i < array.length; i++) {
+        const item = array[i]
+        if (f(item)) {
+          result.push(item)
+        }
+      }
+      return result
+    }
+
+    const names = [
+      {firstName: 'beth'},
+      {firstName: 'caitlyn'},
+      {firstName: 'xin'}
+    ]
+
+    const result = filter(
+      names,
+      _ => _.firstName.startsWith('b')
+    )
+
+    expect(result).toEqual([{firstName: 'beth'}])
+  })
 })
