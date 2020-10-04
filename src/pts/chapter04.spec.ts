@@ -144,4 +144,19 @@ describe('Chapter04', () => {
     expect(b1).toEqual({value: 'B', isLeaf: true})
     expect(c1).toEqual({value: 'C', children: [b]})
   })
+
+  it('bounded polymorphism with multiple constraints', () => {
+    type HasSides = {numberOfSides: number}
+    type SidesHaveLength = {sideLength: number}
+
+
+    function logPerimiter<Shape extends HasSides & SidesHaveLength>(
+      s: Shape
+    ): number {
+      return (s.numberOfSides * s.sideLength)
+    }
+
+    const result = logPerimiter({numberOfSides: 4, sideLength: 5})
+    expect(result).toEqual(20)
+  })
 })
