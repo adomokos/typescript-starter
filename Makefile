@@ -1,3 +1,10 @@
+.PHONY: install
+	yarn install
+
+.PHONY: build
+build:
+	yarn build
+
 .PHONY: fmt
 fmt:
 	yarn run prettier ./src/**/* --config ./prettier.js --write
@@ -8,7 +15,7 @@ lint: build ## Lints the project for best practices
 
 .PHONY: test
 test: ## Runs application tests
-	yarn run test
+	yarn test
 
 .PHONY: clean
 clean: ## Cleans build artifacts and artifact directories
