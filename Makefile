@@ -1,4 +1,5 @@
-.PHONY: install
+.PHONY: pkg-install
+pkg-install:
 	yarn install
 
 .PHONY: build
