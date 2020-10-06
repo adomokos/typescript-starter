@@ -10,4 +10,4 @@ class Greeter {
   }
 }
 
-export = Greeter
+export = Greeter;
