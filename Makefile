@@ -8,11 +8,11 @@ build:
 
 .PHONY: fmt
 fmt:
-	yarn run prettier ./src/**/* --config ./prettier.js --write
+	yarn run prettier ./src/**/* --config ./.prettierrc.js --write
 
 .PHONY: lint
-lint: build ## Lints the project for best practices
-	yarn run tslint --project ./tsconfig.json --config ./tslint.json
+lint: ## Lints the project for best practices
+	yarn eslint . --ext .js,.ts
 
 .PHONY: test
 test: ## Runs application tests

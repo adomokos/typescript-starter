@@ -125,7 +125,7 @@ describe("Chapter04", () => {
 
     function mapNode<T extends TreeNode>(
       node: T,
-      f: (value: string) => string
+      f: (value: string) => string,
     ): T {
       return {
         ...node,
@@ -143,7 +143,7 @@ describe("Chapter04", () => {
     type SidesHaveLength = { sideLength: number };
 
     function logPerimiter<Shape extends HasSides & SidesHaveLength>(
-      s: Shape
+      s: Shape,
     ): number {
       return s.numberOfSides * s.sideLength;
     }
