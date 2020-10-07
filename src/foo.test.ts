@@ -1,9 +1,9 @@
-import { sum } from './foo';
+import { sum } from "./foo";
 
-it('basic', () => {
-  expect(sum()).toBe(0)
-})
+it("basic", () => {
+  expect(sum()).toBe(0);
+});
 
-it('basic again', () => {
-  expect(sum(1, 2)).toBe(3)
-})
+it("basic again", () => {
+  expect(sum(1, 2)).toBe(3);
+});

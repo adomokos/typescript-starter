@@ -8,7 +8,7 @@ build:
 
 .PHONY: fmt
 fmt:
-	yarn run prettier ./src/**/* --config ./.prettierrc.js --write
+	yarn run prettier ./src --config ./.prettierrc.js --write
 
 .PHONY: lint
 lint: ## Lints the project for best practices
